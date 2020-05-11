@@ -14,6 +14,7 @@ class Controller(_Controller):
         self.stream.on_recv(self.handle_message)
 
     def start(self):
+        self.loop.make_current()
         self.initialize()
         self.caller = ioloop.PeriodicCallback(self.arbiter.manage_watchers,
                                               self.check_delay)
